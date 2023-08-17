@@ -1,0 +1,46 @@
+POST  http://localhost:3001/register HTTP/1.1
+content-type: application/json
+
+{
+    "name": "sample8",
+    "email": "fffffdfsdfd@sdfsadaddf.com",
+    "message": "hola mundo8"
+}
+
+
+#######
+
+GET http://localhost:3001/todos
+
+######
+
+GET http://localhost:3001/todos/64bc34d38ec8adb5cc3670a1
+
+#######
+
+PUT http://localhost:3001/todos/64bb1a593816e5a7569c41dc HTTP/1.1
+content-type: application/json
+
+{
+    
+    "email": "ejemplo@mas.com",
+    "message": "cambio"
+}
+
+
+#######
+
+PUT http://localhost:3001/todos/64bc3764102f9f330a1857e5 HTTP/1.1
+content-type: application/json
+
+{
+    
+    "email": "cambiamos el put por 2 vez",
+    "message": "cambio del put" 
+}
+
+######
+
+DELETE  http://localhost:3001/todos/64bb1a593816e5a7569c41dc
+
+#######

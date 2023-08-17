@@ -67,6 +67,7 @@ app.post("/register", (req, res) => {
       res.render('registration-success', { inscripcion: inscripcionRegistrada });
     })
     .catch((err) => {
+      console.log('ERROR')
       console.error(err);
       res.status(500).send({ message: `Error al guardar la inscripción en la base de datos: ${err.message}` });
     });
@@ -121,20 +122,23 @@ app.get('/todos', (req, res) => {
   
 });
 
-app.get('/todos/:id', (req, res) =>{
-  const {id} = req.params
+app.get('/todos/:id', (req, res) => {
+  const { id } = req.params;
 
-  Inscripcion.findById(id).then(data =>{
-    if(data){
-      res.json(data)
-      }else{
-        response.status(404).end()
-        }
-        }).catch(()=>{
-        res.status(500).end();
+  // Supongamos que 'Inscripcion' es el modelo que representa los datos de la inscripción en la base de datos
+  Inscripcion.findById(id)
+    .then(data => {
+      if (data) {
+        res.json(data);
+      } else {
+        res.status(404).json({ error: 'ID no encontrado' });
+      }
+    })
+    .catch(() => {
+      res.status(500).json({ error: 'Error en el servidor' });
+    });
+});
 
-  })
-})
 
 
 
@@ -143,8 +147,9 @@ app.use((req, res) =>{
   return res.status(404).end()
 })
 
-const PORT = 3001
+const port = process.env.PORT || 3001;
 
-app.listen(PORT, () => {
-  console.log(`Servidor iniciado en http://localhost:${PORT}`);
+app.listen(port, () => {
+  console.log(`Servidor iniciado en http://localhost:${port}`);
 });
+
