@@ -62,9 +62,23 @@ app.post("/register", (req, res) => {
         message: datos.message,
         id: datos._id
       };
-
-      // Renderizar la plantilla EJS con la respuesta
-      res.render('registration-success', { inscripcion: inscripcionRegistrada });
+      const htmlResponse = `
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <title>Registro Exitoso</title>
+      </head>
+      <body>
+        <h1>¡Registro exitoso!!!!!!!!!</h1>
+        <p>Nombre: ${inscripcionRegistrada.name}</p>
+        <p>Email: ${inscripcionRegistrada.email}</p>
+        <p>Mensaje: ${inscripcionRegistrada.message}</p>
+        <p>ID de inscripción: ${inscripcionRegistrada.id}</p>
+      </body>
+      </html>
+    `;
+  
+    res.send(htmlResponse);
     })
     .catch((err) => {
       console.log('ERROR')
