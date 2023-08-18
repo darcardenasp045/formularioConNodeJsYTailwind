@@ -74,6 +74,9 @@ app.post("/register", (req, res) => {
         <p>Email: ${inscripcionRegistrada.email}</p>
         <p>Mensaje: ${inscripcionRegistrada.message}</p>
         <p>ID de inscripción: ${inscripcionRegistrada.id}</p>
+        <p>volver al formulario</p>
+        <!-- Botón que permite volver al formulario -->
+        <a href="/">Volver al Formulario</a><br/>
       </body>
       </html>
     `;
